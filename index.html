@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+
+<head>
+    <!--***** META *****-->
+    <meta charset="utf-8">
+    <meta name="description" content=".">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" type="image/png" href="./images/free.png" />
+    <!--***** LINK *****-->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+    <!--***** TITRE *****-->
+    <title> Location de vélo Toulouse </title>
+</head>
+
+<body>
+    <!--******** BANDEAU DE NAVIGATION ********-->
+    <div id="navigation">
+        <!--Navigation Bootstrap-->
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+            <!-- Avec logo -->
+            <a class="navbar-brand" href="#info">
+                <img src="images/logo-velotoulouse.jpg" alt="logo Vélô Toulouse">
+            </a>
+            <!-- Bouton petite défition -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav"
+                aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Conteneur des liens -->
+            <div class="collapse navbar-collapse" id="mainNav">
+                <!-- Liens -->
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#navigation"> <i class="fas fa-home"> </i> </a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#caroussel"> Infos </a></li>
+                    <li class="nav-item"><a class="nav-link" href="#carte"> Carte </a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <!--******** CAROUSSEL ********-->
+    <div id="caroussel">
+        <a id="left" class="commandes" href="#"> <i class="far fa-arrow-alt-circle-left"></i> </a>
+        <a id="right" class="commandes" href="#"> <i class="far fa-arrow-alt-circle-right"></i> </a>
+        <div class="bouton">
+            <a id="stop"> <span id="infobulle">Cliquez pour stopper le diaporama</span> <i
+                    class="far fa-stop-circle"></i> </a>
+            <a id="play"> <span id="infobulle2">Cliquez pour relancer le diaporama</span> <i
+                    class="far fa-play-circle"></i> </a>
+        </div>
+    </div>
+
+    <!--******** CARTE ********-->
+    <div id="carte" class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8 col-sm-6 col-xs-12">
+                <div id="map">
+                    <!-- Ici s'affichera la carte -->
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-sm-6 col-xs-12">
+
+                <div id="infoStation">
+                    <p> Veuillez sélectionner une station afin de poursuivre votre réservation </p>
+                </div>
+
+                <div class="velo">
+                    <i class="fas fa-dot-circle"></i>
+                    <i class="far fa-dot-circle"></i>
+                    <i class="far fa-dot-circle"></i>
+                    <i class="far fa-dot-circle"></i>
+                    <img class="logoVelo" src="images/white.png" alt="petit velo">
+                    <i class="far fa-dot-circle"></i>
+                    <i class="far fa-dot-circle"></i>
+                    <i class="far fa-dot-circle"></i>
+                    <i class="fas fa-dot-circle"></i>
+                </div>
+
+                <div id="descriptionStation">
+                    <div id="description"> </div>
+                    <div id="conteneurBoutonResa"> <button id="boutonResa"> Réserver un vélo </button> </div>
+                </div>
+
+                <div id="msgAlerte">
+                    <p> Une réservation est en cours ! <br /><br /> Veuillez annuler votre réservation pour pouvoir
+                        sélectionner une nouvelle station !
+                    </p>
+                    <i class="far fa-times-circle"></i>
+                </div>
+
+                <div id="conteneurInput">
+                    <p> Entrez votre nom : <input id="nom" type="text" name="nom"></p>
+                    <p> Entrez votre prénom : <input id="prenom" type="text" name="prenom"></p> <br />
+                    <div id="conteneurCanvas">
+                        <p> Signer pour valider votre réservation </p>
+                        <canvas id="signatureCanvas" width="400" height="200"></canvas>
+                        <div>
+                            <input id="valider" type="submit" value="Valider">
+                            <button id="effacer"> <i class="fas fa-eraser"></i> </button>
+                            <button id="annuler"> Annuler </button>
+                        </div>
+                    </div>
+                </div>
+                <div id="chrono">
+                    <p id="textChrono">
+                        Bonjour <span id="prenomClient" class="texteDescription"></span> <span id="nomClient"
+                            class="texteDescription"></span>, <br /><br /> Vous avez une réservation dans la station :
+                        <br /> <span id="station" class="texteDescription"></span> <br /><br /> Il vous reste :
+                        <br /><span id="min" class="texteDescription"></span> min et <span id="sec"
+                            class="texteDescription"></span>s <br /> Pour récupérer votre vélo !</p> <br />
+                    <button id="boutonAnnuler"> Annuler </button>
+                </div>
+            </div>
+        </div>
+        <div id="finChrono">
+            <div id="aucuneResa"> Aucune réservation en cours </div>
+            <div id="annulResa"> Réservation annulée </div>
+            <div id="finResa"> Votre réservation a expiré </div>
+            <div id="cadreVelo">
+                <img src="images/white.png" alt="petit velo">
+                <p class="decompteVelo"> <span id="min2"></span> : <span id="sec2"></span> </p>
+            </div>
+            <div id="traitRouge"> </div>
+        </div>
+    </div>
+
+
+    <!--***** SCRIPT *****-->
+    <!--API & Librairie-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
+        integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+        crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"
+        integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
+        crossorigin=""></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <!--Fichier js-->
+    <script src="./js/ajax.js"></script>
+    <script src="./js/caroussel.js"></script>
+    <script src="./js/map.js"></script>
+    <script src="./js/canvas.js"></script>
+    <script src="./js/chrono.js"></script>
+    <script src="./js/reservation.js"></script>
+    <script src="./js/veloCompteur.js"></script>
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
